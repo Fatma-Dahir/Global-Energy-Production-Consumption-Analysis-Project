@@ -57,6 +57,30 @@ FROM world_energy_overview
 GROUP BY YEAR(Date), MONTH(Date)
 ORDER BY Total_production DESC;
 
+
+-- Consumption by Entity
+SELECT Entity, Year, Primary_energy_consumption_TWh
+FROM primary_energy_consumption
+GROUP BY Entity, Year, Primary_energy_consumption_TWh
+ORDER BY Primary_energy_consumption_TWh DESC;
+
+-- Consumption by Energy Type and Year
+SELECT YEAR(Date) AS Year,
+       ROUND(SUM(Total_Fossil_Fuels_Consumption),2) AS Fossil_Fuels,
+       ROUND(SUM(Nuclear_Electric_Power_Consumption),2) AS Nuclear_Power,
+       ROUND(SUM(Total_Renewable_Energy_Consumption),2) AS Renewable_Energy
+FROM consumption
+GROUP BY YEAR(Date);
+
+-- Production by Energy Type and Year
+SELECT YEAR(Date) AS Year,
+       ROUND(SUM(Total_Fossil_Fuels_Production),2) AS Fossil_Fuels,
+       ROUND(SUM(Nuclear_Electric_Power_Production),2) AS Nuclear_Power,
+       ROUND(SUM(Total_Renewable_Energy_Production),2) AS Renewable_Energy
+FROM production
+GROUP BY YEAR(Date);
+
+
 -- Average Primary Energy Production & Consumption
 SELECT
        ROUND(AVG(Total_Primary_Energy_Production),2) AS Average_Energy_Production,
@@ -71,15 +95,6 @@ SELECT
 FROM world_energy_overview
 GROUP BY YEAR(Date)
 ORDER BY avg_production_to_consumption_ratio DESC;
-
--- Consumption by Entity
-SELECT Entity, Year, Primary_energy_consumption_TWh
-FROM primary_energy_consumption
-GROUP BY Entity, Year, Primary_energy_consumption_TWh
-ORDER BY Primary_energy_consumption_TWh DESC;
-
-
-
 
 
 
