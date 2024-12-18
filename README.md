@@ -38,7 +38,8 @@ The project utilizes the following datasets:
 ## Data Cleaning
 In this phase, I performed the following tasks:
 1. Imported the Data into MySQL Workbench using the Import Table Wizard
-2. Standardized the data
+2. Checked for null values and duplicate records, ensuring data quality
+3. Standardized the data for consistency and analysis
 
 ## Exploratory Data Analysis
 I used SQL to conduct the following analyses on the data:
